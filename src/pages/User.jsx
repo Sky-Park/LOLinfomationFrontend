@@ -25,7 +25,6 @@ function User() {
         if ( !urlParams.name ) {
             return;
         }
-        console.log(urlParams.name)
         async function getRiotUserID() {
             try {
                 const res = await axios.get(`${RIOTGAMES_API}/summoner/v4/summoners/by-name/${urlParams.name}`, {
