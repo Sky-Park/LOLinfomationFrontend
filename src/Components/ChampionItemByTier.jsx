@@ -77,7 +77,7 @@ function ChampionItemByTier() {
     
     
     const challengerItemImg =
-        challengerData.map((value, i) => {
+        challengerData.slice(0,9).map((value, i) => {
             return (
                 <div>
                     <div className="champ_Box">
