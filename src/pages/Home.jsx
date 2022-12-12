@@ -10,8 +10,7 @@ import { RIOTGAMES_API, API_KEY } from "../Constants";
 function Home() {
     const navigate = useNavigate();
     const [inputName, setInputName] = useState("");
-    
-    
+
     return (
         <div>
             <Navibar/>
