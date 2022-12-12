@@ -25,6 +25,7 @@ function User() {
         if ( !urlParams.name ) {
             return;
         }
+        console.log(urlParams.name)
         async function getRiotUserID() {
             try {
                 const res = await axios.get(`${RIOTGAMES_API}/summoner/v4/summoners/by-name/${urlParams.name}`, {
@@ -32,7 +33,6 @@ function User() {
                 });
                 
                 if ( res?.data?.id ) {
-                    
                     setSummonerId(res.data.id);
                 }
             } catch ( e ) {
@@ -52,7 +52,7 @@ function User() {
         
         async function getRiotIngameData() {
             try {
-                const res = await axios.get(RIOTGAMES_API + `/spectator/v4/active-games/by-summoner/${summonerId}`, {
+                const res = await axios.get(`${RIOTGAMES_API}/spectator/v4/active-games/by-summoner/${summonerId}`, {
                     params : { "api_key" : API_KEY }
                 });
                 if ( res?.data ) {
