@@ -1,7 +1,6 @@
 import { Container, Navbar } from 'react-bootstrap';
 import Ahri14 from '../img/img/champion/tiles/Ahri_14.jpg'
 import {  useNavigate } from 'react-router-dom'
-import { RIOTGAMES_API, API_KEY, SERVER_URL } from "../Constants";
 
 function Navibar() {
     

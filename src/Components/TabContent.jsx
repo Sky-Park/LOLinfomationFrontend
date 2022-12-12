@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import axios from 'axios'
 import EnemyChampionItem from "./EnemyChampionItem";
 
 function TabContent({ tab, myChampionId, enemyTeam, enemy }) {

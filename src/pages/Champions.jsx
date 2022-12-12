@@ -1,10 +1,8 @@
-import React, { useState,useEffect } from "react";
+import React from "react";
 import { useParams } from "react-router-dom";
 import ChampionItemByTier from "../Components/ChampionItemByTier";
-import { RIOTGAMES_API, API_KEY, SERVER_URL } from "../Constants";
 
 function Champions() {
-    
     const urlParams = useParams();
     
     return (
@@ -17,8 +15,6 @@ function Champions() {
             <div>
                 <ChampionItemByTier />
             </div>
-            
-            
         </>
     );
 }

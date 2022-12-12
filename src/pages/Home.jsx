@@ -1,17 +1,14 @@
 import { Button, InputGroup, Form } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import Navibar from "../Components/Navibar";
-import { useState } from "react";
+import React, { useState } from "react";
 import ChampionList from '../Components/ChampionList'
-import { RIOTGAMES_API, API_KEY } from "../Constants";
 
 
 //Home (메인 페이지)
 function Home() {
     const navigate = useNavigate();
     const [inputName, setInputName] = useState("");
-    
-    
     
     return (
         <div>
@@ -27,7 +24,11 @@ function Home() {
                     aria-describedby="basic-addon2"
                 />
                 <Button variant="dark" id="button-addon2" onClick={() => {
-                    navigate(`/summoners/kr/${inputName}`);
+                    if (!inputName) {
+                        alert ("소환사 이름을 입력하세요.")
+                    } else {
+                        navigate(`/summoners/kr/${inputName}`)
+                    }
                 }}>
                     검색
                 </Button>

@@ -1,7 +1,6 @@
 import React from "react";
 import champdata from "../data/champdata";
 import { useNavigate } from "react-router-dom";
-import { RIOTGAMES_API, API_KEY, SERVER_URL } from "../Constants";
 
 function ChampionList() {
     

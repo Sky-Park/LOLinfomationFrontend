@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import { RIOTGAMES_API, API_KEY, SERVER_URL } from "../Constants";
+import { SERVER_URL } from "../Constants";
 
 function EnemyChampionItem ({ tab, myChampionId, enemy}) {
     

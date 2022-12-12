@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useMemo } from "react";
 import axios from "axios";
-import { RIOTGAMES_API, API_KEY, SERVER_URL } from "../Constants";
+import { SERVER_URL } from "../Constants";
 
 function MyBestChampions({ summonerName }) {
     
@@ -9,7 +9,7 @@ function MyBestChampions({ summonerName }) {
     
     
     useEffect(() => {
-     
+        
         async function getBestChampions() {
             setLoading(true);
             try {
@@ -24,7 +24,7 @@ function MyBestChampions({ summonerName }) {
         }
         
         getBestChampions();
-       
+        
     }, []);
     
     
@@ -37,28 +37,47 @@ function MyBestChampions({ summonerName }) {
                         width="40"/>
                     <h5>픽률 : {`${value.champPickRate}`}</h5>
                     <h5>승률 : {`${value.champWinRate}`}</h5>
-                    {value.itemWinRate.map((item, i) => {
+                    {value.itemWinRate.slice(0, 9).map((item, i) => {
                         return (<div key={i} className="champBox">
                             <img
                                 src={`http://ddragon.leagueoflegends.com/cdn/12.22.1/img/item/${item.itemId}.png`}
                                 width="40"
                             />
-                            <h8> 픽률 : {`${item.itemPickRate}`}</h8>
-                            <h8> 승률 : {`${item.itemWinRate}`}</h8>
+                            <h6> 픽률 : {`${item.itemPickRate}`}</h6>
+                            <h6> 승률 : {`${item.itemWinRate}`}</h6>
                         </div>);
                     })}
                 </div>
             </div>
         )));
-    }, [getSummoner])
+    }, [getSummoner]);
+
     
+    //전적업데이트 함수
+    async function getRecentMatches() {
+        try {
+            const res = await axios.get(`${SERVER_URL}/saveData/summonerMatchlist/${summonerName}`);
+            if ( res?.data ) {
+                alert(res.data.message)
+                console.log(res?.data)
+            }
+        } catch ( e ) {
+            console.log(e);
+        }
+    }
+
     
     return (
         <div>
             {loading ? (
                 <div>소환사 정보를 계산중입니다...</div>
             ) : (
-                <div>{myChampions} </div>
+                <>
+                    <button onClick={getRecentMatches}>전적 업데이트</button>
+                    <div>
+                        {myChampions}
+                    </div>
+                </>
             )}
         </div>
     );

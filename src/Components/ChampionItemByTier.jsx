@@ -2,7 +2,7 @@ import React, { useEffect, useState, useMemo } from "react";
 import { useParams } from "react-router-dom";
 import champdata from "../data/champdata";
 import axios from "axios";
-import { RIOTGAMES_API, API_KEY, SERVER_URL } from "../Constants";
+import { SERVER_URL } from "../Constants";
 
 function ChampionItemByTier() {
     
