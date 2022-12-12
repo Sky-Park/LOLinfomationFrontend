@@ -14,7 +14,7 @@ function MyBestChampions({ summonerName }) {
         
         async function getBestChampions() {
             try {
-                const res = await axios.get(`${SERVER_URL}/match/summonerName/${summonerName}`
+                const res = await axios.get(`${SERVER_URL}/match/summoner/${summonerName}`
                 );
                 if ( res?.data ) {
                     setGetSummoner(res?.data);
