@@ -29,9 +29,7 @@ function User() {
                 const res = await axios.get(`${RIOTGAMES_API}/summoner/v4/summoners/by-name/${urlParams.name}`, {
                     params : { "api_key" : API_KEY }
                 });
-                
                 if ( res?.data?.id ) {
-                    
                     setSummonerId(res.data.id);
                 }
             } catch ( e ) {
@@ -40,6 +38,7 @@ function User() {
         }
         
         getRiotUserID();
+        
     }, [urlParams]);
     
     
@@ -55,6 +54,7 @@ function User() {
                     params : { "api_key" : API_KEY }
                 });
                 if ( res?.data ) {
+                    console.log(res.data)
                     setIngameData(res?.data);
                 }
             } catch ( e ) {
@@ -151,4 +151,3 @@ function User() {
 }
 
 export default User;
-

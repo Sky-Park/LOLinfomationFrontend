@@ -9,14 +9,13 @@ function MyBestChampions({ summonerName }) {
     
     
     useEffect(() => {
-        
         async function getBestChampions() {
-            setLoading(true);
             try {
                 const res = await axios.get(`${SERVER_URL}/match/summoner/${summonerName}`);
                 if ( res?.data ) {
-                    setGetSummoner(res?.data);
+                    setGetSummoner(res.data);
                     setLoading(false);
+                    console.log(loading)
                 }
             } catch ( e ) {
                 console.log(e);
@@ -25,10 +24,14 @@ function MyBestChampions({ summonerName }) {
         
         getBestChampions();
         
-    }, []);
+    }, [getSummoner]);
     
     
     const myChampions = useMemo(() => {
+        if (getSummoner === "현재 전적 데이터가 존재하지않는 소환사입니다. 데이터 계산 중이오니 잠시만 기다려주세요.") {
+            return ;
+        }
+        
         
         return (getSummoner.slice(0, 5).map((value, i) => (<div className="champBox box-width" key={i}>
                 <div>
